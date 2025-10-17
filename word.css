@@ -1,0 +1,172 @@
+:root{
+  --bg1: #ff9a9e;
+  --bg2: #fad0c4;
+  --accent1: #6dd3b1;
+  --accent2: #72a7ff;
+  --card: #ffffffee;
+  --glass: rgba(255,255,255,0.12);
+  --glass-2: rgba(255,255,255,0.06);
+  --text: #1b1b1b;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter, "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial;
+  background: linear-gradient(135deg,var(--bg1),var(--bg2),#c1f0ff);
+  background-size:400% 400%;
+  animation: bgMove 10s ease infinite;
+  color:var(--text);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+
+@keyframes bgMove {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+.app{
+  width:100%;
+  max-width:980px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.82));
+  border-radius:16px;
+  padding:20px;
+  box-shadow:0 10px 30px rgba(10,10,20,0.12);
+  backdrop-filter: blur(6px) saturate(120%);
+}
+
+/* Header */
+header{ text-align:center; margin-bottom:12px }
+h1{ margin:0; font-size:2rem; letter-spacing:0.5px }
+.tagline{ color:#333a; margin-top:6px; }
+
+/* Controls */
+.controls{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:space-between;
+  margin:12px 0 18px;
+  flex-wrap:wrap;
+}
+
+.controls label{ font-size:0.9rem; display:block; margin-bottom:6px }
+.controls select{ padding:8px 10px; border-radius:10px; border:1px solid #eee; background:white }
+
+.btn{
+  padding:8px 12px;
+  border-radius:10px;
+  border:none;
+  cursor:pointer;
+  background:var(--glass);
+  color:var(--text);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+  transition:transform .12s ease, box-shadow .12s;
+  font-weight:600;
+}
+.btn:hover{ transform:translateY(-3px); box-shadow:0 8px 18px rgba(0,0,0,0.08) }
+
+.btn.primary{ background: linear-gradient(90deg,var(--accent1),var(--accent2)); color:white }
+.btn.success{ background: linear-gradient(90deg,#88e0b9,#5fb2ff); color:white }
+
+/* Stats */
+.stats{ display:flex; gap:12px; align-items:center; font-weight:700 }
+
+/* Game area */
+.game{
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+
+.scrambled-panel, .answer-panel{
+  background:var(--card);
+  border-radius:12px;
+  padding:14px;
+  flex:1 1 320px;
+  min-height:160px;
+  box-shadow: 0 6px 18px rgba(15,15,30,0.06);
+}
+
+.scrambled-panel h2, .answer-panel h2{ margin:0 0 8px; font-size:1.05rem }
+.letters{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:8px;
+}
+
+.letter {
+  background:linear-gradient(180deg,#fff,#fafafa);
+  border-radius:10px;
+  padding:12px 14px;
+  min-width:46px;
+  height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.25rem;
+  font-weight:800;
+  color:#333;
+  user-select:none;
+  cursor:pointer;
+  box-shadow:0 6px 14px rgba(40,40,60,0.06);
+  transition:transform .12s ease, background .12s;
+}
+.letter:hover{ transform:translateY(-6px) }
+
+#guess{
+  width:100%;
+  padding:12px 14px;
+  border-radius:10px;
+  border:1px solid #eee;
+  font-size:1.1rem;
+  margin-top:8px;
+  outline:none;
+}
+#guess:focus{ box-shadow:0 4px 18px rgba(80,120,220,0.12); border-color:#dbe9ff }
+
+.actions{ display:flex; gap:8px; margin-top:10px; align-items:center }
+
+.feedback{ margin-top:10px; min-height:22px; font-weight:700 }
+
+/* word info */
+.word-info{
+  display:flex;
+  gap:16px;
+  margin-top:14px;
+  justify-content:center;
+  color:#333a;
+  font-weight:600;
+}
+
+/* footer */
+footer{ text-align:center; margin-top:14px; color:#3337; font-size:0.9rem }
+
+/* Emoji shower */
+#emoji-shower{ position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:9999 }
+.emoji{
+  position:absolute;
+  font-size:24px;
+  animation:fall 3.2s linear forwards;
+  transform-origin:center;
+}
+@keyframes fall {
+  0%{ transform: translateY(-10vh) rotate(0deg); opacity:1 }
+  100%{ transform: translateY(110vh) rotate(360deg); opacity:0 }
+}
+
+/* Responsive */
+@media (max-width:720px){
+  .game{ flex-direction:column }
+  .controls{ gap:8px }
+  .stats{ font-size:0.95rem }
+  .letter{ min-width:44px; padding:10px 12px; height:44px }
+}
