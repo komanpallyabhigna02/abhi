@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Word Scramble ✨</title>
+  <link rel="stylesheet" href="word.css" />
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>🔤 Word Scramble</h1>
+      <p class="tagline">Unscramble the word — click letters or type. Get hints, beat the clock!</p>
+    </header>
+
+    <section class="controls">
+      <div class="left">
+        <label for="difficulty">Difficulty</label>
+        <select id="difficulty">
+          <option value="easy">Easy</option>
+          <option value="medium" selected>Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+
+      <div class="middle">
+        <button id="new-word" class="btn primary">🔀 New Word</button>
+        <button id="hint-btn" class="btn">💡 Hint</button>
+        <button id="skip-btn" class="btn">⏭ Skip</button>
+      </div>
+
+      <div class="right">
+        <div class="stats">
+          <div>Time: <span id="timer">00:30</span></div>
+          <div>Score: <span id="score">0</span></div>
+          <div>Best: <span id="best">0</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="game">
+      <div class="scrambled-panel">
+        <h2>Scrambled</h2>
+        <div id="scrambled" class="letters"></div>
+      </div>
+
+      <div class="answer-panel">
+        <h2>Your Guess</h2>
+        <input id="guess" type="text" maxlength="30" placeholder="Click letters or type here" autocomplete="off"/>
+        <div class="actions">
+          <button id="check-btn" class="btn success">✅ Check</button>
+          <button id="clear-btn" class="btn">✖ Clear</button>
+        </div>
+        <p id="feedback" class="feedback"></p>
+      </div>
+    </section>
+
+    <section class="word-info">
+      <div>Length: <span id="word-length">—</span></div>
+      <div>Hints used: <span id="hints-used">0</span></div>
+    </section>
+
+    <footer>
+      <p>Made with ❤️ — Have fun! (Words are English)</p>
+    </footer>
+  </main>
+
+  <!-- emoji shower -->
+  <div id="emoji-shower"></div>
+
+  <script src="word.js"></script>
+</body>
+</html>
